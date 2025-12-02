@@ -1,0 +1,300 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-background: oklch(0.145 0 0);
+  --color-foreground: oklch(0.985 0 0);
+  --color-card: oklch(0.205 0.015 60);
+  --color-card-foreground: oklch(0.985 0 0);
+  --color-popover: oklch(0.205 0.015 60);
+  --color-popover-foreground: oklch(0.985 0 0);
+  --color-primary: oklch(0.646 0.174 41.2);
+  --color-primary-foreground: oklch(0.985 0 0);
+  --color-secondary: oklch(0.269 0.01 60);
+  --color-secondary-foreground: oklch(0.985 0 0);
+  --color-tertiary: oklch(0.6 0.15 195);
+  --color-tertiary-foreground: oklch(0.985 0 0);
+  --color-success: oklch(0.65 0.2 145);
+  --color-success-foreground: oklch(0.985 0 0);
+  --color-warning: oklch(0.75 0.18 80);
+  --color-warning-foreground: oklch(0.15 0 0);
+  --color-info: oklch(0.65 0.15 250);
+  --color-info-foreground: oklch(0.985 0 0);
+  --color-muted: oklch(0.269 0.01 60);
+  --color-muted-foreground: oklch(0.708 0.02 60);
+  --color-accent: oklch(0.269 0.01 60);
+  --color-accent-foreground: oklch(0.985 0 0);
+  --color-destructive: oklch(0.553 0.195 27.33);
+  --color-destructive-foreground: oklch(0.985 0 0);
+  --color-border: oklch(0.35 0.015 60);
+  --color-input: oklch(0.35 0.015 60);
+  --color-ring: oklch(0.646 0.174 41.2);
+  --color-chart-1: oklch(0.646 0.174 41.2);
+  --color-chart-2: oklch(0.6 0.15 195);
+  --color-chart-3: oklch(0.65 0.2 145);
+  --color-chart-4: oklch(0.75 0.18 80);
+  --color-chart-5: oklch(0.65 0.15 250);
+  --color-sidebar: oklch(0.205 0.015 60);
+  --color-sidebar-foreground: oklch(0.985 0 0);
+  --color-sidebar-primary: oklch(0.646 0.174 41.2);
+  --color-sidebar-primary-foreground: oklch(0.985 0 0);
+  --color-sidebar-accent: oklch(0.269 0.01 60);
+  --color-sidebar-accent-foreground: oklch(0.985 0 0);
+  --color-sidebar-border: oklch(0.35 0.015 60);
+  --color-sidebar-ring: oklch(0.646 0.174 41.2);
+  --radius: 0.625rem;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-heading: "Space Grotesk", "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-sans);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-heading);
+    @apply font-semibold tracking-tight;
+  }
+}
+
+/* Custom Animations */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 oklch(0.646 0.174 41.2 / 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 8px oklch(0.646 0.174 41.2 / 0);
+  }
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Animation Classes */
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out forwards;
+}
+
+.animate-fade-out {
+  animation: fade-out 0.3s ease-out forwards;
+}
+
+.animate-slide-up {
+  animation: slide-up 0.4s ease-out forwards;
+}
+
+.animate-slide-down {
+  animation: slide-down 0.4s ease-out forwards;
+}
+
+.animate-scale-in {
+  animation: scale-in 0.3s ease-out forwards;
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, oklch(0.269 0.01 60) 0%, oklch(0.35 0.015 60) 50%, oklch(0.269 0.01 60) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 3s linear infinite;
+}
+
+/* Stagger Animation Delays */
+.stagger-1 {
+  animation-delay: 0.05s;
+}
+.stagger-2 {
+  animation-delay: 0.1s;
+}
+.stagger-3 {
+  animation-delay: 0.15s;
+}
+.stagger-4 {
+  animation-delay: 0.2s;
+}
+.stagger-5 {
+  animation-delay: 0.25s;
+}
+.stagger-6 {
+  animation-delay: 0.3s;
+}
+.stagger-7 {
+  animation-delay: 0.35s;
+}
+.stagger-8 {
+  animation-delay: 0.4s;
+}
+
+/* Card Accent Borders */
+.card-accent-primary {
+  border-left: 3px solid oklch(0.646 0.174 41.2);
+}
+
+.card-accent-tertiary {
+  border-left: 3px solid oklch(0.6 0.15 195);
+}
+
+.card-accent-success {
+  border-left: 3px solid oklch(0.65 0.2 145);
+}
+
+.card-accent-warning {
+  border-left: 3px solid oklch(0.75 0.18 80);
+}
+
+.card-accent-destructive {
+  border-left: 3px solid oklch(0.553 0.195 27.33);
+}
+
+/* Focus Glow Effect */
+.focus-glow:focus {
+  box-shadow: 0 0 0 3px oklch(0.646 0.174 41.2 / 0.25);
+}
+
+/* Hover Card Effect */
+.hover-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hover-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px -5px oklch(0 0 0 / 0.3);
+}
+
+/* Status Indicators */
+.status-online {
+  @apply relative;
+}
+
+.status-online::after {
+  content: "";
+  @apply absolute -top-0.5 -right-0.5 w-2.5 h-2.5 rounded-full;
+  background: oklch(0.65 0.2 145);
+  box-shadow: 0 0 0 2px oklch(0.205 0.015 60);
+}
+
+.status-warning::after {
+  background: oklch(0.75 0.18 80);
+}
+
+.status-error::after {
+  background: oklch(0.553 0.195 27.33);
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: oklch(0.205 0.015 60);
+}
+
+::-webkit-scrollbar-thumb {
+  background: oklch(0.35 0.015 60);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: oklch(0.4 0.015 60);
+}
+
+/* Glass Effect */
+.glass {
+  background: oklch(0.205 0.015 60 / 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Typography */
+.text-balance {
+  text-wrap: balance;
+}
+
+.text-pretty {
+  text-wrap: pretty;
+}
